@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon
+    id="context.addtolib"
+    name="Add to Lib"
+    version="1.0.16"
+    provider-name="Taifxx"
+    >
+  <requires>
+    <import
+        addon="xbmc.python"
+        version="2.1.0"
+    />
+  </requires>
+  <extension
+      point="kodi.context.item"
+      library="context.py"
+  >
+		<item>
+			<label>$ADDON[context.addtolib 29999]</label>
+			<!--visible>Container.Content(tvshows)|Container.Content(movies)|Container.Content(musicvideos)|Container.Content(episodes)</visible-->
+			<visible>True</visible>
+		</item>
+  </extension>
+  <extension point="xbmc.service" library="service.py" start="login"/>
+  <extension point="xbmc.python.script" library="context.py"/>
+  <extension point="xbmc.addon.metadata">
+
+    <summary lang="en">Adds links to movies and TV shows from other add-ons in Kodi library</summary>
+    <summary lang="ru">Добавляет ссылки на фильмы и сериалы из других дополнений в библиотеку Kodi</summary>
+    <summary lang="es">Añadir enlaces a Películas y Series de otros add-ons en Kodi biblioteca</summary>
+
+    <description lang="en">Context menu item to add links to TV shows and movies from other add-ons in Kodi library, as .strm files. The addition allows you to check for new episodes and seasons, manage added content, and to receive full information from the library to playable .strm files.
+More information can be found in the help section.
+
+Details on http://taifxx.github.io/xxtrep</description>
+    <description lang="ru">Элемент контекстного меню для добавления ссылок на сериалы и фильмы из других дополнений в библиотеку Kodi, как .strm файлов. Дополнение позволяет проверять наличие новых эпизодов и сезонов, управлять добавленным контентом, а также получать полноценную информацию из библиотеки для воспроизводимых .strm файлов.
+Больше информации можно получить в разделе Помощи дополнения.
+
+Детали на http://taifxx.github.io/xxtrep.ru</description>
+    <description lang="es">Elemento de menú contextual para añadir enlaces a Películas y Series de otros complementos en Kodi biblioteca, como archivos .strm. La adición permite chequear nuevos episodios y temporadas, administrar contenidos agregados, recibir información completa de la biblioteca cuando el video se reproduce.
+Más información puede encontrarse en la sección de ayuda. Gracias Ruorbe para la traducción.
+
+Detalles sobre http://taifxx.github.io/xxtrep</description>
+
+    <disclaimer lang="en"></disclaimer>
+    <disclaimer lang="ru"></disclaimer>
+    <disclaimer lang="es"></disclaimer>
+
+    <platform>all</platform>
+
+    <website>http://taifxx.github.io/xxtrep</website>
+    <source>https://github.com/Taifxx/xxtrep/tree/master/context.addtolib</source>
+
+    <forum lang="en">http://forum.kodi.tv/showthread.php?tid=268997</forum>
+    <forum lang="ru">http://xbmc.ru/forum/showthread.php?t=12708</forum>
+
+    <email>xxtrep@yandex.ru</email>
+
+    <license>GNU GENERAL PUBLIC LICENSE V3</license>
+
+  </extension>
+</addon>
+
+<addon
+	id="context.agregacontenido"
+	name="Agrega contenido"
+	version="0.0.10b"
+	provider-name="Adrian">
+  <requires>
+	<import addon="xbmc.python" version="2.25.0"/>
+  </requires>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="default.py">
+				<label>$ADDON[context.agregacontenido 32000]</label>
+				<visible>Container.Content(tvshows)|Container.Content(movies)|Container.Content(musicvideos)|!IsEmpty(ListItem.Genre)</visible>
+			</item>
+			<item library="updater.py">
+				<label>$ADDON[context.agregacontenido 33000]</label>
+				<visible>Container.Content(tvshows)|Container.Content(movies)|Container.Content(musicvideos)|!IsEmpty(ListItem.Genre)</visible>
+			</item>
+      <item library="borrador.py">
+        <label>$ADDON[context.agregacontenido 34000]</label>
+        <visible>Container.Content(tvshows)|Container.Content(movies)|Container.Content(musicvideos)|!IsEmpty(ListItem.Genre)</visible>
+      </item>
+		</menu>
+	</extension>
+  <extension point="xbmc.service" library="service.py" />
+
+  <extension point="kodi.addon.metadata">
+    <platform>all</platform>
+    <summary lang="es">Agrega contenido generando un STRM</summary>
+    <description lang="es">Agrega peliculas y series a tu libreria de Kodi. Crea un STRM para cada contenido.</description>
+    <forum></forum>
+    <source></source>
+  </extension>
+</addon>
+
+<addon id="plugin.video.palantir" name="[COLOR gold]Palantir[/COLOR]" version="0.0.68" provider-name="TierraMedia">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+    <import addon="script.module.simple.downloader" version="1.9.5"/>
+	<import addon="script.module.requests"/>
+    <import addon="script.module.resolveurl" optional="true"/>
+    <import addon="script.extendedinfo" optional="true"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="orthanc.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.repository" name="Palantir Repo">
+        <info>https://raw.githubusercontent.com/Palantiraddon/Repo/master/Palantir/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/Palantiraddon/Repo/master/Palantir/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/Palantiraddon/repo/master/Palantir/</datadir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>TV</summary>
+    <news>[COLOR lime][B] versión 0.0.68 [/B][/COLOR]
+        - [Interno] Añadidos servidores nuevos.
+    </news>
+    <description>Visualiza el contenido de la nube, series, películas.</description>
+    <disclaimer>[B][COLOR red]Todo el contenido disponible en este Addon esta sacado de servidores gratuitos, disponible en la red para todos los usuarios.[/B][/COLOR]</disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.gif</fanart>
+    </assets>
+    <license></license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>
+  </extension>
+</addon>
+
+<addon id="repository.jsergio" name="jsergio repo" version="1.0.4" provider-name="jsergio">
+	<extension point="xbmc.addon.repository" name="jsergio repo">
+        <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Repo for jsergio Add-ons</summary>
+		<description>Repo for jsergio Add-ons</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.Maniac" name="Maniac repository" version="1.0.0" provider-name="Maniac">
+	<extension point="xbmc.addon.repository" name="Maniac Repository">
+		<info compressed="false">http://raw.github.com/Maniac2017/repository.Maniac/master/addons.xml</info>
+		<checksum>http://raw.github.com/Maniac2017/repository.Maniac/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/Maniac2017/repository.Maniac/master/repor/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Maniac Addon</summary>
+		<description>Repositorio NO oficial para Kodi</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.Palantir" name="[COLOR gold]Palantir[/COLOR] Repo" version="1.0.1" provider-name="TierraMedia">
+    <extension point="xbmc.addon.repository" name="Palantir Repo">
+        <info>https://raw.githubusercontent.com/Palantiraddon/Repo/master/Palantir/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/Palantiraddon/Repo/master/Palantir/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/Palantiraddon/repo/master/Palantir/</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Repositorio para Palantir</summary>
+        <description></description>
+        <disclaimer></disclaimer>
+        <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="repository.xbmchub" name="TVADDONS.CO Add-on Repository" version="3.0.0" provider-name="tvaddons">
+	<extension point="xbmc.addon.repository" name="TVADDONS.CO Add-on Repository">
+	<dir>
+		<info compressed="false">https://github.com/tvaddonsco/tva-resolvers-repo/raw/master/addons.xml</info>
+		<checksum>https://github.com/tvaddonsco/tva-resolvers-repo/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/tvaddonsco/tva-resolvers-repo/raw/master/zips/</datadir>
+	</dir>
+
+    <dir>
+		<info compressed="false">https://github.com/tvaddonsco/tva-release-repo/raw/master/addons.xml</info>
+		<checksum>https://github.com/tvaddonsco/tva-release-repo/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/tvaddonsco/tva-release-repo/raw/master/</datadir>
+    </dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Unofficial Kodi Addons from TVADDONS.CO</summary>
+		<description>Unofficial Kodi Addons from the TVADDONS.CO Add-on Repository. Please visit www.tvaddons.co for support!
+
+Kodi is a registered trademark of the XBMC Foundation. We are not connected to or in any other way affiliated with Kodi, Team Kodi, or the XBMC Foundation.</description>
+         <disclaimer>TVADDONS.CO did not make all the add-ons in this repository and is not responsible for their content.</disclaimer>
+		<platform>all</platform>
+                <forum>https://www.tvaddons.co/forums</forum>
+                <website>https://www.tvaddons.co</website>
+	</extension>
+</addon>
+
+<addon id="script.artwork.beef" name="Artwork Beef" version="0.26.0" provider-name="rmrector">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="xbmc.json" version="6.20.0" />
+		<import addon="script.module.simplejson" version="3.3.0" />
+		<import addon="script.module.requests" version="2.9.1" />
+		<import addon="script.common.plugin.cache" version="2.5.8" />
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<menu id="kodi.core.manage">
+				<item library="context.py">
+					<label>AB: $ADDON[script.artwork.beef 32410]</label>
+					<visible>!Skin.HasSetting(disablecontext:script.artwork.beef) + [StringCompare(ListItem.DBTYPE, movie) | StringCompare(ListItem.DBTYPE, set) | StringCompare(ListItem.DBTYPE, tvshow) | StringCompare(ListItem.DBTYPE, episode) | StringCompare(ListItem.DBTYPE, musicvideo) | String.IsEqual(ListItem.DBTYPE, movie) | String.IsEqual(ListItem.DBTYPE, set) | String.IsEqual(ListItem.DBTYPE, tvshow) | String.IsEqual(ListItem.DBTYPE, episode) | String.IsEqual(ListItem.DBTYPE, musicvideo)]</visible>
+				</item>
+				<item library="context_gui.py">
+					<label>AB: $ADDON[script.artwork.beef 32411]</label>
+					<visible>!Skin.HasSetting(disablecontext:script.artwork.beef) + [StringCompare(ListItem.DBTYPE, movie) | StringCompare(ListItem.DBTYPE, set) | StringCompare(ListItem.DBTYPE, tvshow) | StringCompare(ListItem.DBTYPE, episode) | StringCompare(ListItem.DBTYPE, musicvideo) | String.IsEqual(ListItem.DBTYPE, movie) | String.IsEqual(ListItem.DBTYPE, set) | String.IsEqual(ListItem.DBTYPE, tvshow) | String.IsEqual(ListItem.DBTYPE, episode) | String.IsEqual(ListItem.DBTYPE, musicvideo)]</visible>
+				</item>
+				<item library="context_debug_remove.py">
+					<label>AB: $ADDON[script.artwork.beef 32427]</label>
+					<visible>Skin.HasSetting(enablecontext:script.artwork.beef.debug) + [StringCompare(ListItem.DBTYPE, movie) | StringCompare(ListItem.DBTYPE, set) | StringCompare(ListItem.DBTYPE, tvshow) | StringCompare(ListItem.DBTYPE, episode) | StringCompare(ListItem.DBTYPE, musicvideo) | StringCompare(ListItem.DBTYPE, season) | String.IsEqual(ListItem.DBTYPE, movie) | String.IsEqual(ListItem.DBTYPE, set) | String.IsEqual(ListItem.DBTYPE, tvshow) | String.IsEqual(ListItem.DBTYPE, episode) | String.IsEqual(ListItem.DBTYPE, musicvideo) | StringCompare(ListItem.DBTYPE, season)]</visible>
+				</item>
+				<item library="context_debug_logitem.py">
+					<label>AB: $ADDON[script.artwork.beef 32430]</label>
+					<visible>Skin.HasSetting(enablecontext:script.artwork.beef.debug) + [StringCompare(ListItem.DBTYPE, movie) | StringCompare(ListItem.DBTYPE, set) | StringCompare(ListItem.DBTYPE, tvshow) | StringCompare(ListItem.DBTYPE, episode) | StringCompare(ListItem.DBTYPE, musicvideo) | String.IsEqual(ListItem.DBTYPE, movie) | String.IsEqual(ListItem.DBTYPE, set) | String.IsEqual(ListItem.DBTYPE, tvshow) | String.IsEqual(ListItem.DBTYPE, episode) | String.IsEqual(ListItem.DBTYPE, musicvideo)]</visible>
+				</item>
+			</menu>
+			<item library="context.py">
+				<label>AB: $ADDON[script.artwork.beef 32410]</label>
+				<visible>!Skin.HasSetting(disablecontext:script.artwork.beef) + [String.StartsWith(System.BuildVersion,18) | String.StartsWith(System.BuildVersion,19)] + [String.IsEqual(ListItem.DBTYPE, artist) | String.IsEqual(ListItem.DBTYPE, album) | String.IsEqual(ListItem.DBTYPE, song)]</visible>
+			</item>
+			<item library="context_gui.py">
+				<label>AB: $ADDON[script.artwork.beef 32411]</label>
+				<visible>!Skin.HasSetting(disablecontext:script.artwork.beef) + [String.StartsWith(System.BuildVersion,18) | String.StartsWith(System.BuildVersion,19)] + [String.IsEqual(ListItem.DBTYPE, artist) | String.IsEqual(ListItem.DBTYPE, album) | String.IsEqual(ListItem.DBTYPE, song)]</visible>
+			</item>
+			<item library="context_debug_remove.py">
+				<label>AB: $ADDON[script.artwork.beef 32427]</label>
+				<visible>Skin.HasSetting(enablecontext:script.artwork.beef.debug) + [String.StartsWith(System.BuildVersion,18) | String.StartsWith(System.BuildVersion,19)] + [String.IsEqual(ListItem.DBTYPE, artist) | String.IsEqual(ListItem.DBTYPE, album) | String.IsEqual(ListItem.DBTYPE, song)]</visible>
+			</item>
+			<item library="context_debug_logitem.py">
+				<label>AB: $ADDON[script.artwork.beef 32430]</label>
+				<visible>Skin.HasSetting(enablecontext:script.artwork.beef.debug) + [String.StartsWith(System.BuildVersion,18) | String.StartsWith(System.BuildVersion,19)] + [String.IsEqual(ListItem.DBTYPE, artist) | String.IsEqual(ListItem.DBTYPE, album) | String.IsEqual(ListItem.DBTYPE, song)]</visible>
+			</item>
+		</menu>
+	</extension>
+	<extension point="xbmc.service" start="login" library="service.py" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Automatically adds extra artwork for your media.</summary>
+		<description lang="en">Artwork Beef automatically adds extra artwork for TV shows and movies into your library. It grabs them from wonderful web services and the file system.</description>
+		<disclaimer lang="en">Artwork sources: fanart.tv, TheTVDB.com, The Movie Database, TheAudioDB, KyraDB</disclaimer>
+		<summary lang="es">Agrega automáticamente ilustraciones adicionales para sus medios.</summary>
+		<description lang="es">Artwork Beef agrega automáticamente ilustraciones adicionales para Series TV y Películas a su biblioteca. Las ilustraciones son agregadas desde Servicios web y el Sistema de archivos local.</description>
+		<disclaimer lang="es">Fuente para ilustraciones: fanart.tv, TheTVDB.com, The Movie Database, TheAudioDB, KyraDB</disclaimer>
+		<news>v0.26.0 (2019-08-11)
+- Feature: add settings to enable / disable each web service individually
+- Fix: require both keys from users for KyraDB
+- Fix: error with Jarvis / old urllib3
+
+v0.25.0 - 0.25.2
+- Feature: add 'animatedkeyart' from KyraDB
+- Fix: match 'animatedposter' language for automated scanning
+- Fix: identify and skip bad image results from TheTVDB
+- Fix: add some general protection against a bit of web service parsing errors
+
+v0.24.0 (2019-07-07)
+- Feature: add KyraDB as an image provider
+	- 'characterart', 'animatedposter', and 'animatedfanart' for movies
+- Fix: error in error handling
+		</news>
+		<source>https://github.com/rmrector/script.artwork.beef</source>
+		<forum>https://forum.kodi.tv/showthread.php?tid=258886</forum>
+		<website>https://rmrector.github.io/script.artwork.beef/</website>
+		<license>The MIT License</license>
+		<platform>all</platform>
+		<assets>
+			<icon>icon.png</icon>
+		</assets>
+	</extension>
+</addon>
+
+<addon id="script.extendedinfo" name="ExtendedInfo Script" version="5.6.1" provider-name="phil65 (Philipp Temminghoff)">
+	<requires>
+		<import addon="xbmc.python" version="2.25.0"/>
+		<import addon="resource.images.studios.white" version="0.0.5"/>
+		<import addon="script.module.kodi65" version="1.0.0"/>
+		<import addon="script.module.routing" version="0.1.0"/>
+		<!-- 		<import addon="script.module.buggalo" version="1.1.6"/>-->
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.python.pluginsource" library="plugin.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<language/>
+		<summary lang="en">ExtendedInfo Script</summary>
+		<description lang="en">This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Used services are themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com and a lot more. Needs skin implementation for lot of functions.</description>
+		<summary lang="es">ExtendedInfo Script</summary>
+		<description lang="es">Este script ofrece varias posibilidades para poder mostrar información online dentro de una piel, así como un completo navegador de TheMovieDB, incluidos los cuadros de diálogo de información para diversos tipos de medios. Los servicios usados son themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com y mucho más. Necesita la implementación en el skin para muchas de sus funciones.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+		<forum>http://forum.kodi.tv/showthread.php?tid=160558</forum>
+		<source>https://github.com/phil65/script.extendedinfo</source>
+		<email>phil65@kodi.tv</email>
+		<news>Fix support for Kodi L* nightlies[CR]Browser window improvements[CR]Fixes for TADB/LastFM</news>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>resources/screenshot-01.jpg</screenshot>
+			<screenshot>resources/screenshot-02.jpg</screenshot>
+			<screenshot>resources/screenshot-03.jpg</screenshot>
+			<screenshot>resources/screenshot-04.jpg</screenshot>
+			<screenshot>resources/screenshot-05.jpg</screenshot>
+		</assets>
+	</extension>
+</addon>
+
+<addon id="script.module.parsedom" name="Parsedom for xbmc plugins" provider-name="TheCollective" version="2.5.2">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Parsedom for xbmc plugins.</summary>
+  </extension>
+  <extension library="lib" point="xbmc.python.module" />
+  <extension point="xbmc.addon.metadata">
+        <license>GPLv3</license>
+        <platform>all</platform>
+        <email></email>
+        <website></website>
+        <forum>http://forum.xbmc.org/showthread.php?tid=116498</forum>
+        <source>https://github.com/HenrikDK/xbmc-common-plugin-functions</source>
+        <language></language>
+   </extension>
+</addon>
+
+<addon id="script.module.simple.downloader" name="Simple Downloader for xbmc plugins" provider-name="TheCollective" version="1.9.5">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="script.common.plugin.cache" version="2.5.0" />
+    <import addon="script.module.parsedom" version="2.5.1" />
+  </requires>
+  <extension library="default.py" point="xbmc.service" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">Simple downloader for xbmc plugins.</summary>
+  </extension>
+  <extension library="lib" point="xbmc.python.module" />
+</addon>
+
+<addon id="service.upnext" name="Up Next" provider-name="im85288" version="0.1.8">
+    <requires>
+        <import addon="script.module.requests" version="2.9.1"/>
+    </requires>
+    <extension library="service.py" point="xbmc.service"/>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Provides a netflix style pop up notification for watching the next episode with fancy/simple
+            modes.
+        </summary>
+        <description lang="en">Provides a netflix style pop up notification for watching the next episode with
+            fancy/simple modes. A prompt to check if your still watching also occurs after a few automatically watched
+            shows in a row.
+        </description>
+        <platform>all</platform>
+        <language/>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>resources/screenshot-01.jpg</screenshot>
+            <screenshot>resources/screenshot-02.jpg</screenshot>
+            <screenshot>resources/screenshot-03.jpg</screenshot>
+            <screenshot>resources/screenshot-04.jpg</screenshot>
+        </assets>
+    </extension>
+</addon>
+</addons>
